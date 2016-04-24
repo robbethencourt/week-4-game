@@ -5,10 +5,10 @@ $(document).ready(function(){
 		text_box: $("#text"),
 		attack_button: $("#attack"),
 		restart_button: $("#restart"),
-		enemies_remaining: 3,
 		health_points_span: $(".health-points"),
 		health_bar: $(".progress-bar"),
 		ch_divs: $(".characters"),
+		selected_characters: 4,
 		characters: [{
 			name: "Padme",
 			base_health_points: 200,
@@ -80,13 +80,31 @@ $(document).ready(function(){
 				"right": "0px"
 			});
 
-			// reset enemies remaining to 3
-			this.enemies_remaining = 3;
+			// reset selected_characters to 4 so the initial character selected moves to the player's position
+			this.selected_characters = 4;
 		},
 
 		// player choses a character function. This repoisitons the selected character on the gameboard and displays text asking the player to select the first enemy to engage.
 		chosenPlayer: function (chosen_player) {
-			console.log(chosen_player);
+
+			// reduce number of selected characters by 1
+			this.selected_characters--;
+			chosen_player.css({
+				"top": "200px",
+				"right": "900px"
+			});
+		},
+
+		//
+		chosenEnemy: function (chosen_player) {
+
+			// reduce number of selected characters by 1
+			this.selected_characters--;
+
+			chosen_player.css({
+				"top": "200px",
+				"right": "400px"
+			});
 		}
 	}
 
@@ -94,10 +112,18 @@ $(document).ready(function(){
 	starWarsGame.startGame();
 
 	$(starWarsGame.ch_divs).on("click", function (e) {
-		starWarsGame.chosenPlayer($(this));
-	});
 
-	console.log(starWarsGame.ch_divs);
+		if (starWarsGame.selected_characters === 4) {
+
+			starWarsGame.chosenPlayer($(this));
+
+		} else {
+
+			starWarsGame.chosenEnemy($(this));
+
+		} // end if else for chaaracter select
+
+	}); // end character click event
 
 
 
