@@ -10,6 +10,8 @@ $(document).ready(function(){
 		ch_divs: $(".characters"),
 		selected_characters: 4,
 		active_enemies: 0,
+		active_player: "",
+		active_enemy: "",
 		characters: [{
 			name: "Padme",
 			base_health_points: 200,
@@ -86,34 +88,43 @@ $(document).ready(function(){
 
 			// reset active enemies to 0
 			this.active_enemies = 0;
+
+			// set the active player and active enemy to empty strings
+			this.active_player = "";
+			this.active_enemy = "";
 		},
 
 		// player choses a character function. This repoisitons the selected character on the gameboard and displays text asking the player to select the first enemy to engage.
-		chosenPlayer: function (chosen_player) {
+		chosenPlayer: function (player) {
+
+			// set the active_player to the selected character
+			this.active_player = $(player).find(".name").text();
 
 			// reduce number of selected characters by 1
 			this.selected_characters--;
-			chosen_player.css({
+			player.css({
 				"top": "250px",
 				"right": "60%"
 			});
 
 			// display text asking the player to chose an enemy to attack
 			$(this.text_box).html("Select an enemy to attack.");
-			console.log("hello");
 		},
 
 		//
-		chosenEnemy: function (chosen_player) {
+		chosenEnemy: function (enemy) {
 
 			// determine if there are active enemies so that only one enemy is positioned if the player mistakenly clicks a second enemy before the first enemy has been defeated
 			if (this.active_enemies === 0) {
+
+				// set the active_enemy to the selected character
+				this.active_enemy = $(enemy).find(".name").text();
 
 				// reduce number of selected characters by 1
 				this.selected_characters--;
 
 				// move the player's character to the left of the screen
-				chosen_player.css({
+				enemy.css({
 					"top": "250px",
 					"right": "20%"
 				});
@@ -127,8 +138,15 @@ $(document).ready(function(){
 				// display text asking the player to chose an enemy to attack
 				$(this.text_box).html("ATTACK!!!!!");
 			}
+		},
+
+		attack: function () {
+			
+			// decrease the health points of the attacked enemy
+
 		}
 	}
+
 
 	// starter functions and event handlers
 	starWarsGame.startGame();
@@ -147,6 +165,10 @@ $(document).ready(function(){
 
 	}); // end character click event
 
+	$(starWarsGame.attack_button).on("click", function (e) {
 
+		starWarsGame.attack();
+
+	})
 
 });
