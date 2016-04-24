@@ -193,7 +193,7 @@ $(document).ready(function(){
 			// update the width of the progress bar
 			$(this.health_bar[this.active_enemy.ch_number]).css("width", enemy_health_bar_percentage + "%");
 
-			// Dead Character Section
+			// Dead Enemy Character Section
 			// if the active enemy's health points are 0 or below (meaning they're toast)
 			if (this.active_enemy.health_points <= 0) {
 
@@ -201,14 +201,14 @@ $(document).ready(function(){
 				if (this.selected_characters !== 0) {
 
 					// display the name of the dead character to the screen with
-					$(this.text_box).html("You have killed " + this.active_enemy.name + "<p>Select another character to fight</p>");
+					$(this.text_box).html("You have killed " + this.active_enemy.name + "<br />Select another character to fight.");
 
 				} else {
 
 					// you have won the game so display a congratulatory message
-					$(this.text_box).html("You have killed " + this.active_enemy.name + "<p>Congratulations! You are the ruler of the galaxy.</p>");
+					$(this.text_box).html("You have killed " + this.active_enemy.name + "<br />Congratulations! You are the ruler of the galaxy.");
 
-					// display the Restart button
+					// activate the Restart button
 					$(this.restart_button).prop('disabled', false);
 
 				} // end if else
@@ -224,7 +224,7 @@ $(document).ready(function(){
 				this.active_enemy = {};
 				this.active_enemies = 0;
 
-				// activate the attack button
+				// deactivate the attack button
 				$(this.attack_button).prop('disabled', true);
 
 			} // end if
@@ -253,6 +253,28 @@ $(document).ready(function(){
 				} // end if
 				// update the width of the progress bar
 				$(this.health_bar[this.active_player.ch_number]).css("width", player_health_bar_percentage + "%");
+
+				// display the amount of damage done by each character on the screen
+				$(this.text_box).html(this.active_enemy.name + " received " + this.active_player.attack_power + " points in damage. <br />" + this.active_player.name + " received " + this.active_enemy.counter_attack_power + " points in damage.");
+
+			}
+
+			// Dead Player Character Section
+			if (this.active_player.health_points <= 0) {
+
+				// add the .dead-chaaracter class to the active player image
+				$(this.ch_divs[this.active_player.ch_number]).find("img").addClass("dead-character");
+
+				// display game over on the screen
+				// you have won the game so display a congratulatory message
+				$(this.text_box).html("You have been killed by " + this.active_enemy.name + "<br />GAME OVER");
+
+
+				// deactivate the attack button
+				$(this.attack_button).prop('disabled', true);
+
+				// activate the Restart button
+				$(this.restart_button).prop('disabled', false);
 
 			}
 		}
