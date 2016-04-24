@@ -18,7 +18,7 @@ $(document).ready(function(){
 			health_points: this.base_health_points,
 			base_attack_power: 20,
 			attack_power: this.base_attack_power,
-			counter_attack_power: this.base_attack_power,
+			counter_attack_power: 20, // why does this.base_attack_power return undefined?
 			ch_number: 0
 		}, {
 			name: "Vader",
@@ -26,7 +26,7 @@ $(document).ready(function(){
 			health_points: this.base_health_points,
 			base_attack_power: 50,
 			attack_power: this.base_attack_power,
-			counter_attack_power: this.base_attack_power,
+			counter_attack_power: 50, // why does this.base_attack_power return undefined?
 			ch_number: 1
 		}, {
 			name: "Ghost Obi-Wan",
@@ -34,7 +34,7 @@ $(document).ready(function(){
 			health_points: this.base_health_points,
 			base_attack_power: 20,
 			attack_power: this.base_attack_power,
-			counter_attack_power: this.base_attack_power,
+			counter_attack_power: 20, // why does this.base_attack_power return undefined?
 			ch_number: 2
 		}, {
 			name: "Lando",
@@ -42,7 +42,7 @@ $(document).ready(function(){
 			health_points: this.base_health_points,
 			base_attack_power: 20,
 			attack_power: this.base_attack_power,
-			counter_attack_power: this.base_attack_power,
+			counter_attack_power: 20, // why does this.base_attack_power return undefined?
 			ch_number: 3
 		}],
 		characters_length: 4, // this was coming up undefined as this.characters.length and I'm not sure why
@@ -176,24 +176,22 @@ $(document).ready(function(){
 			// increase the attack power of the active player
 			this.active_player.attack_power = this.active_player.attack_power + this.active_player.base_attack_power;
 
-			console.log(this.active_player.base_attack_power + " / " + this.active_player.attack_power);
-
 			// displays to the screen
 			// update the active enemie's health points
 			$(this.health_points_span[this.active_enemy.ch_number]).html(this.active_enemy.health_points);
 
 			// store the percentage of the remaining healthbar in a variable
-			var health_bar_percentage = (this.active_enemy.health_points / this.active_enemy.base_health_points) * 100;
+			var enemy_health_bar_percentage = (this.active_enemy.health_points / this.active_enemy.base_health_points) * 100;
 			// if the health bar is below 50% add the bootstrap warning class to the progress bar
-			if (health_bar_percentage < 50) {
+			if (enemy_health_bar_percentage < 50) {
 				$(this.health_bar[this.active_enemy.ch_number]).addClass("progress-bar-warning");
 			} // end if
 			// if the health bar is below 20% add the bootstrap danger class to the progress bar
-			if (health_bar_percentage < 20) {
+			if (enemy_health_bar_percentage < 20) {
 				$(this.health_bar[this.active_enemy.ch_number]).addClass("progress-bar-danger");	
 			} // end if
 			// update the width of the progress bar
-			$(this.health_bar[this.active_enemy.ch_number]).css("width", health_bar_percentage + "%");
+			$(this.health_bar[this.active_enemy.ch_number]).css("width", enemy_health_bar_percentage + "%");
 
 			// Dead Character Section
 			// if the active enemy's health points are 0 or below (meaning they're toast)
@@ -229,11 +227,34 @@ $(document).ready(function(){
 				// activate the attack button
 				$(this.attack_button).prop('disabled', true);
 
-			}
+			} // end if
 
 
 			// Counter Attack Section
-			// if active enemy is not an empty object
+			// if active enemy's character number is not undefined (meaning there is an active enemy)
+			if (this.active_enemy.ch_number !== undefined) {
+
+				// decrease the health points of the player by the counter attack power of the active enemy
+				this.active_player.health_points = this.active_player.health_points - this.active_enemy.counter_attack_power;
+
+				// displays to the screen
+				// update the active player's health points
+				$(this.health_points_span[this.active_player.ch_number]).html(this.active_player.health_points);
+
+				// store the percentage of the remaining healthbar in a variable
+				var player_health_bar_percentage = (this.active_player.health_points / this.active_player.base_health_points) * 100;
+				// if the health bar is below 50% add the bootstrap warning class to the progress bar
+				if (player_health_bar_percentage < 50) {
+					$(this.health_bar[this.active_player.ch_number]).addClass("progress-bar-warning");
+				} // end if
+				// if the health bar is below 20% add the bootstrap danger class to the progress bar
+				if (player_health_bar_percentage < 20) {
+					$(this.health_bar[this.active_player.ch_number]).addClass("progress-bar-danger");	
+				} // end if
+				// update the width of the progress bar
+				$(this.health_bar[this.active_player.ch_number]).css("width", player_health_bar_percentage + "%");
+
+			}
 		}
 	}
 
