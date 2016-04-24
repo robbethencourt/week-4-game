@@ -9,6 +9,7 @@ $(document).ready(function(){
 		health_bar: $(".progress-bar"),
 		ch_divs: $(".characters"),
 		selected_characters: 4,
+		active_enemies: 0,
 		characters: [{
 			name: "Padme",
 			base_health_points: 200,
@@ -42,7 +43,7 @@ $(document).ready(function(){
 		// starts the game on load and can be called once the Restart button is pressed
 		startGame: function () {
 
-			$(this.text_box).html("Choose one of the character above as your character.");
+			$(this.text_box).html("Choose one of the characters above as your character.");
 			$(this.attack_button).prop('disabled', true);
 			$(this.restart_button).hide();
 
@@ -82,6 +83,9 @@ $(document).ready(function(){
 
 			// reset selected_characters to 4 so the initial character selected moves to the player's position
 			this.selected_characters = 4;
+
+			// reset active enemies to 0
+			this.active_enemies = 0;
 		},
 
 		// player choses a character function. This repoisitons the selected character on the gameboard and displays text asking the player to select the first enemy to engage.
@@ -90,21 +94,39 @@ $(document).ready(function(){
 			// reduce number of selected characters by 1
 			this.selected_characters--;
 			chosen_player.css({
-				"top": "200px",
-				"right": "900px"
+				"top": "250px",
+				"right": "60%"
 			});
+
+			// display text asking the player to chose an enemy to attack
+			$(this.text_box).html("Select an enemy to attack.");
+			console.log("hello");
 		},
 
 		//
 		chosenEnemy: function (chosen_player) {
 
-			// reduce number of selected characters by 1
-			this.selected_characters--;
+			// determine if there are active enemies so that only one enemy is positioned if the player mistakenly clicks a second enemy before the first enemy has been defeated
+			if (this.active_enemies === 0) {
 
-			chosen_player.css({
-				"top": "200px",
-				"right": "400px"
-			});
+				// reduce number of selected characters by 1
+				this.selected_characters--;
+
+				// move the player's character to the left of the screen
+				chosen_player.css({
+					"top": "250px",
+					"right": "20%"
+				});
+
+				// set the active enemies to 1. This will be set to 0 once the enemy has been defeated.
+				this.active_enemies = 1;
+
+				// activate the attack button
+				$(this.attack_button).prop('disabled', false);
+
+				// display text asking the player to chose an enemy to attack
+				$(this.text_box).html("ATTACK!!!!!");
+			}
 		}
 	}
 
