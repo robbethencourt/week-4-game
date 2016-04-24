@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content="Star Wars RPG">
+		<meta name="author" content="Rob Bethencourt">
+		<title>Star Wars RPG</title>
+
+		<!-- Reset Styles -->
+		<link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+
+		<!-- Bootstrap minified CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+		<!-- My Styles -->
+		<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+
+		<!-- google 8-bit font called Press Start 2P -->
+		<link href='https://fonts.googleapis.com/css?family=Press+Start+2P' rel='stylesheet' type='text/css'>
+	</head>
+<body>
+
+	<!-- nav -->
+	<nav class="navbar navbar-default"></nav>
+
+	<!-- gameboard -->
+	<div class="container-fluid">
+		<div id="gameboard">
+			<div id="character-1">
+				<h2><span class="name">Padme</span> <span class="health-points">200</span></h2>
+				<div class="progress">
+  					<div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%">
+	    				<span class="sr-only">20% Complete</span>
+	  				</div>
+  				</div>
+  				<img src="assets/images/padme.jpg" />
+			</div>
+			<div id="character-2">
+				<h2><span class="name">Vader</span> <span class="health-points">200</span></h2>
+				<div class="progress">
+  					<div class="progress-bar progress-bar-info progress-bar-danger" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%">
+	    				<span class="sr-only">20% Complete</span>
+	  				</div>
+  				</div>
+  				<img src="assets/images/vader.jpg" />
+			</div>
+			<div id="character-3">
+				<h2><span class="name">Ghost Obi-Wan</span> <span class="health-points">200</span></h2>
+				<div class="progress">
+  					<div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%">
+	    				<span class="sr-only">20% Complete</span>
+	  				</div>
+  				</div>
+  				<img src="assets/images/ghost-obi-wan.jpg" />
+			</div>
+			<div id="character-4">
+				<h2><span class="name">lando</span> <span class="health-points">200</span></h2>
+				<div class="progress">
+  					<div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%">
+	    				<span class="sr-only">20% Complete</span>
+	  				</div>
+  				</div>
+  				<img src="assets/images/lando.jpg" />
+			</div>
+		</div>
+	</div>
+
+	<!-- text and buttons -->
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-sm-9">
+				<div id="text-container">
+					<p id="text">some content that needs to be added so I can see how it will display on the screen when text is printed to the screen.</p>
+				</div>
+			</div>
+			<div class="col-sm-3">
+				<div id="buttons-container">
+					<ul class="buttons-ul">
+						<li><button type="button" class="btn btn-default" id="attack" value="attack">Attack</button></li>
+						<li><button type="button" class="btn btn-default" id="restart" value="restart">Restart</button></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+<script type="text/javascript" src="assets/javascript/game.js"></script>
+</body>
+</html>

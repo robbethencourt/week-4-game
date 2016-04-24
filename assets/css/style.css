@@ -1,0 +1,77 @@
+body {
+	color: #fff;
+	font-family: 'Press Start 2P', cursive;
+	background: #414141;
+}
+
+/* navbar */
+.navbar {
+	height: 100px;
+	border-radius: 0;
+	background: url(../images/star-wars-bg.jpg) repeat-x;
+}
+
+	.navbar-default {
+		border: none;
+	}
+
+
+/* gameboard */
+#gameboard {
+	position: relative;
+	height: 450px;
+}
+
+	/* characters */
+	#character-1, #character-2, #character-3, #character-4 {
+		cursor: pointer;
+		width: 250px;
+		margin: 0 10px;
+		position: absolute;
+		top: 0;
+	}
+
+	#character-1 {
+		right: 810px;
+	}
+
+	#character-2 {
+		right: 540px;
+	}
+
+	#character-3 {
+		right: 270px;
+	}
+
+	#character-4 {
+		right: 0px;
+	}
+
+		#gameboard h2 {
+			font-size: 1em;
+		}
+
+		.progress {
+			height: 15px;
+			width: 60%;
+			border-radius: 0;
+		}
+
+/* text and buttons */
+#text-container, #buttons-container {
+	height: 200px;
+	padding: 50px;
+	border: solid 3px #fff;
+	border-radius: 15px;
+	box-shadow: 3px -3px 0px #999, -3px -3px 0px #999, -3px 3px 0px #999, 3px 3px 0px #999, inset 5px -5px 0px #999, inset -5px -5px 0px #999, inset -5px 5px 0px #999, inset 5px 5px 0px #999;
+}
+
+	.buttons-ul li {
+		margin-bottom: 30px;
+	}
+
+		.btn-default {
+		    color: #fff;
+		    background: none;
+		    border: none;
+		}
