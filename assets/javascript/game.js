@@ -10,8 +10,8 @@ $(document).ready(function(){
 		ch_divs: $(".characters"),
 		selected_characters: 4,
 		active_enemies: 0,
-		active_player: "",
-		active_enemy: "",
+		active_player: {},
+		active_enemy: {},
 		characters: [{
 			name: "Padme",
 			base_health_points: 200,
@@ -41,6 +41,7 @@ $(document).ready(function(){
 			attack_power: this.base_attack_power,
 			counter_attack_power: this.base_attack_power
 		}],
+		characters_length: 4, // this was coming up undefined as this.characters.length and I'm not sure why
 
 		// starts the game on load and can be called once the Restart button is pressed
 		startGame: function () {
@@ -97,8 +98,18 @@ $(document).ready(function(){
 		// player choses a character function. This repoisitons the selected character on the gameboard and displays text asking the player to select the first enemy to engage.
 		chosenPlayer: function (player) {
 
-			// set the active_player to the selected character
-			this.active_player = $(player).find(".name").text();
+			// set the active_player to the character the player chose
+			// loop through the characters array until the name of the character matches the one selected
+			for (var i = 0; i < this.characters_length; i++) {
+				
+				// if there's a match
+				if (this.characters[i].name === $(player).find(".name").text()) {
+
+					// set the active player to the one selected
+					this.active_player = this.characters[i];
+					console.log(this.active_player);
+				} // end if
+			} // end for loop
 
 			// reduce number of selected characters by 1
 			this.selected_characters--;
@@ -117,13 +128,23 @@ $(document).ready(function(){
 			// determine if there are active enemies so that only one enemy is positioned if the player mistakenly clicks a second enemy before the first enemy has been defeated
 			if (this.active_enemies === 0) {
 
-				// set the active_enemy to the selected character
-				this.active_enemy = $(enemy).find(".name").text();
+				// set the active_enemy to the character the enemy chose
+				// loop through the characters array until the name of the character matches the one selected
+				for (var i = 0; i < this.characters_length; i++) {
+					
+					// if there's a match
+					if (this.characters[i].name === $(enemy).find(".name").text()) {
+
+						// set the active enemy to the one selected
+						this.active_enemy = this.characters[i];
+						console.log(this.active_enemy);
+					} // end if
+				} // end for loop
 
 				// reduce number of selected characters by 1
 				this.selected_characters--;
 
-				// move the player's character to the left of the screen
+				// move the enemy character to the left of the screen
 				enemy.css({
 					"top": "250px",
 					"right": "20%"
@@ -143,7 +164,7 @@ $(document).ready(function(){
 		attack: function () {
 			
 			// decrease the health points of the attacked enemy
-
+			this.active_enemy
 		}
 	}
 
