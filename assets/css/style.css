@@ -58,6 +58,12 @@ body {
 			border-radius: 0;
 		}
 
+		.dead-character {
+			transform: rotate(90deg);
+			-webkit-filter: grayscale(100%);
+			filter: grayscale(100%);
+		}
+
 /* text and buttons */
 #text-container, #buttons-container {
 	height: 200px;
