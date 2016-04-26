@@ -46,9 +46,15 @@ $(document).ready(function(){
 			ch_number: 3
 		}],
 		characters_length: 4, // this was coming up undefined as this.characters.length and I'm not sure why
+		swg_theme_song: new Audio("assets/sounds/star-wars-game-imp-march-8bit.mp3"),
 
 		// starts the game on load and can be called once the Restart button is pressed
 		startGame: function () {
+
+			// restart the theme song
+			this.swg_theme_song.pause();
+    		this.swg_theme_song.currentTime = 0;
+			this.swg_theme_song.play();
 
 			$(this.text_box).html("Choose one of the characters above as your character.");
 			$(this.attack_button).prop('disabled', true);
