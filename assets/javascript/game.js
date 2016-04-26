@@ -16,9 +16,9 @@ $(document).ready(function(){
 			name: "Padme",
 			base_health_points: 200,
 			health_points: this.base_health_points,
-			base_attack_power: 20,
+			base_attack_power: 10,
 			attack_power: this.base_attack_power,
-			counter_attack_power: 20, // why does this.base_attack_power return undefined?
+			counter_attack_power: 10, // why does this.base_attack_power return undefined?
 			ch_number: 0
 		}, {
 			name: "Vader",
@@ -32,9 +32,9 @@ $(document).ready(function(){
 			name: "Ghost Obi-Wan",
 			base_health_points: 999,
 			health_points: this.base_health_points,
-			base_attack_power: 20,
+			base_attack_power: 1,
 			attack_power: this.base_attack_power,
-			counter_attack_power: 20, // why does this.base_attack_power return undefined?
+			counter_attack_power: 1, // why does this.base_attack_power return undefined?
 			ch_number: 2
 		}, {
 			name: "Lando",
@@ -120,10 +120,10 @@ $(document).ready(function(){
 
 			// reduce number of selected characters by 1
 			this.selected_characters--;
-			player.css({
-				"top": "250px",
-				"right": "60%"
-			});
+			player.animate({
+				top: "250px",
+				right: "60%"
+			}, 200);
 
 			// display text asking the player to chose an enemy to attack
 			$(this.text_box).html("Select an enemy to attack.");
@@ -151,10 +151,10 @@ $(document).ready(function(){
 				this.selected_characters--;
 
 				// move the enemy character to the left of the screen
-				enemy.css({
-					"top": "250px",
-					"right": "20%"
-				});
+				enemy.animate({
+					top: "250px",
+					right: "20%"
+				}, 200);
 
 				// set the active enemies to 1. This will be set to 0 once the enemy has been defeated.
 				this.active_enemies = 1;
@@ -217,7 +217,7 @@ $(document).ready(function(){
 				$(this.health_points_span[this.active_enemy.ch_number]).html("0");
 
 				// move the active enemy to the right of the screen and add the .dead-chaaracter class to the image
-				$(this.ch_divs[this.active_enemy.ch_number]).css("right", "0%");
+				$(this.ch_divs[this.active_enemy.ch_number]).animate({right: "0%"}, 200);
 				$(this.ch_divs[this.active_enemy.ch_number]).find("img").addClass("dead-character");
 
 				// set the active enemy to an empty object and set the active number of enemies to 0
@@ -261,6 +261,9 @@ $(document).ready(function(){
 
 			// Dead Player Character Section
 			if (this.active_player.health_points <= 0) {
+
+				// set the health points to 0 so no negative numbers show
+				$(this.health_points_span[this.active_player.ch_number]).html("0");
 
 				// add the .dead-chaaracter class to the active player image
 				$(this.ch_divs[this.active_player.ch_number]).find("img").addClass("dead-character");

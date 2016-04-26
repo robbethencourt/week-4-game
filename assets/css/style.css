@@ -59,6 +59,7 @@ body {
 		}
 
 		.dead-character {
+			transition: .2s;
 			transform: rotate(90deg);
 			-webkit-filter: grayscale(100%);
 			filter: grayscale(100%);
@@ -77,8 +78,10 @@ body {
 		margin-bottom: 30px;
 	}
 
-		.btn-default {
+		.btn-custom, .btn-custom:hover, .btn-custom:active, .btn.active, .btn:active:hover, .btn:focus {
 		    color: #fff;
 		    background: none;
 		    border: none;
+		    outline: none;
+		    box-shadow: none;
 		}
