@@ -2,6 +2,7 @@
 $(document).ready(function(){
 
 	var starWarsGame = {
+		title_screen: $("#title-screen"),
 		text_box: $("#text"),
 		attack_button: $("#attack"),
 		restart_button: $("#restart"),
@@ -19,7 +20,9 @@ $(document).ready(function(){
 			base_attack_power: 10,
 			attack_power: 10,
 			counter_attack_power: 10,
-			ch_number: 0
+			ch_number: 0,
+			dialogue_first: ["Ani, what have you done to yourself?", "Obi-Wan? Is that you? You've grown to be an old man. And now a ghost!", "I dig guys in capes. Honestly though, I'm old enough to be your mother."],
+			dialogue_last: [""]
 		}, {
 			name: "Vader",
 			base_health_points: 460,
@@ -27,7 +30,9 @@ $(document).ready(function(){
 			base_attack_power: 50,
 			attack_power: 50,
 			counter_attack_power: 50,
-			ch_number: 1
+			ch_number: 1,
+			dialogue_first: ["Consider me Ani 2.0. Prepare to die, my love."],
+			dialogue_last: []
 		}, {
 			name: "Ghost Obi-Wan",
 			base_health_points: 999,
@@ -35,7 +40,9 @@ $(document).ready(function(){
 			base_attack_power: 1,
 			attack_power: 1,
 			counter_attack_power: 1,
-			ch_number: 2
+			ch_number: 2,
+			dialogue_first: ["Padme, allow me to use my powers and save you as a force ghost. It does mean I've got to strike you down though.", "You see, I only became stronger. My health is at a max 999, while yours is at a whimpy 460, my young padawan.", "Your mind is weak, Lando. And I need to build my attack power so I can finish off Vader once and for all. It's be painless."],
+			dialogue_last: []
 		}, {
 			name: "Lando",
 			base_health_points: 300,
@@ -43,7 +50,9 @@ $(document).ready(function(){
 			base_attack_power: 20,
 			attack_power: 20,
 			counter_attack_power: 20,
-			ch_number: 3
+			ch_number: 3,
+			dialogue_first: ["", "Take it easy, Vader. You got Han. I've got a suite of cloud city escorts in my secluded wing that can bring your old tin can back to life. Know what I mean?", "You were in all 6 movies and were lucky Yoda was around to save your ass. I'm surprised you didn't pop up in The Force Awakens to mess things up there also."],
+			dialogue_last: []
 		}],
 		characters_length: 4,
 		swg_theme_song: new Audio("assets/sounds/star-wars-game-imp-march-8bit.mp3"),
@@ -295,6 +304,11 @@ $(document).ready(function(){
 
 
 	// starter functions and event handlers
+	// removes title screen and will only display when the page is reloaded so the player can quickly play again
+	$(starWarsGame.title_screen).on("click", function (e) {
+		$(this).css("display", "none");
+	})
+
 	starWarsGame.startGame();
 
 	$(starWarsGame.ch_divs).on("click", function (e) {
