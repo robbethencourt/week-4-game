@@ -56,6 +56,9 @@ $(document).ready(function(){
     		this.swg_theme_song.currentTime = 0;
 			this.swg_theme_song.play();
 
+			// fade in all the characters
+			$(this.ch_divs).fadeIn(0);
+
 			$(this.text_box).html("Choose one of the characters above as your character.");
 			$(this.attack_button).prop('disabled', true);
 			$(this.restart_button).prop('disabled', true);
@@ -222,9 +225,10 @@ $(document).ready(function(){
 				// set the health points to 0 so no negative numbers show
 				$(this.health_points_span[this.active_enemy.ch_number]).html("0");
 
-				// move the active enemy to the right of the screen and add the .dead-chaaracter class to the image
-				$(this.ch_divs[this.active_enemy.ch_number]).animate({right: "0%"}, 200);
+				// move the active enemy to the right of the screen, add the .dead-chaaracter class to the image and fade that character out
+				$(this.ch_divs[this.active_enemy.ch_number]).animate({right: "0%"}, 200).fadeOut(1000 * 5);
 				$(this.ch_divs[this.active_enemy.ch_number]).find("img").addClass("dead-character");
+				//$(this.ch_divs[this.active_enemy.ch_number]).fadeOut(1000 * 5);
 
 				// set the active enemy to an empty object and set the active number of enemies to 0
 				this.active_enemy = {};
