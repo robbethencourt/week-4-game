@@ -21,8 +21,8 @@ $(document).ready(function(){
 			attack_power: 10,
 			counter_attack_power: 10,
 			ch_number: 0,
-			dialogue_first: ["Ani, what have you done to yourself?", "Obi-Wan? Is that you? You've grown to be an old man. And now a ghost!", "I dig guys in capes. Honestly though, I'm old enough to be your mother."],
-			dialogue_last: [""]
+			dialogue_first: ["Ani, what have you done to yourself?", "Obi-Wan? Is that you? You've grown to be an old man. And now a ghost!", "Finally, a real man!"],
+			dialogue_last: ["Time machines? I thought that was more of a James Cameron thing?", "WTF?! You've lost your marbles old man. And quit checking me out when my back is turned. Don't think I didn't notice. It's why I wore all those cloaks around you. Creep-o.", "No time for love, Lando. But that's the best cloak in the galaxy. I want it!"]
 		}, {
 			name: "Vader",
 			base_health_points: 460,
@@ -31,8 +31,8 @@ $(document).ready(function(){
 			attack_power: 50,
 			counter_attack_power: 50,
 			ch_number: 1,
-			dialogue_first: ["Consider me Ani 2.0. Prepare to die, my love."],
-			dialogue_last: []
+			dialogue_first: ["Padme, I've come back through time to eliminate the mother of the rebel alliance. Our love now means nothing to me.", "Wait wait wait. Is this what you thought would happen when I struck you down? (vader laughter, coughing, chocking on laughter) More powerful than I can imagine? (more laughing) Your a ghost! What a joke. What are you going to creep around the corner and 'Boo' me to death? (more laughter)", "Those Coruscant escorts sent to me last night were not up to the empire's standards. Did you not get the galactic memorandum on registered night workers? I'll need to thuroughly inspect each of your brothels. Hope I don't find any other violations."],
+			dialogue_last: ["I always hated the pet name 'Ani'. Feels like I should be in a musical. Consider me Anikan 2.0. Prepare to die, my love.", "You smug old coot. No higher ground bs this time. I'm going to smash your midichlorians to smitherines. DIE!!!", "Honestly, Lando. I don't know what the hell you're ever yammering about. I'm tired of pretending to listen to you."]
 		}, {
 			name: "Ghost Obi-Wan",
 			base_health_points: 999,
@@ -41,8 +41,8 @@ $(document).ready(function(){
 			attack_power: 1,
 			counter_attack_power: 1,
 			ch_number: 2,
-			dialogue_first: ["Padme, allow me to use my powers and save you as a force ghost. It does mean I've got to strike you down though.", "You see, I only became stronger. My health is at a max 999, while yours is at a whimpy 460, my young padawan.", "Your mind is weak, Lando. And I need to build my attack power so I can finish off Vader once and for all. It's be painless."],
-			dialogue_last: []
+			dialogue_first: ["Padme, allow me to use my powers and save you as a force ghost. It does mean I have to strike you down though.", "You see, I did became stronger. My health is at a max 999 while yours is at a whimpy 460, my young padawan.", "Your mind is weak, Lando. And I need to build my attack power so I can finish off Vader once and for all. It'll be painless."],
+			dialogue_last: ["Don't be scared. Anikan is with me now as well. He looked rather old in the original unremastered analog trilogy, but then got a Hollywood upgrade. Looks just as dashing as ever. Let me take you to him.", "You, are, so, OBNOQIOUS!!!", "Does everyone in the galaxy think that?"]
 		}, {
 			name: "Lando",
 			base_health_points: 300,
@@ -51,8 +51,8 @@ $(document).ready(function(){
 			attack_power: 20,
 			counter_attack_power: 20,
 			ch_number: 3,
-			dialogue_first: ["", "Take it easy, Vader. You got Han. I've got a suite of cloud city escorts in my secluded wing that can bring your old tin can back to life. Know what I mean?", "You were in all 6 movies and were lucky Yoda was around to save your ass. I'm surprised you didn't pop up in The Force Awakens to mess things up there also."],
-			dialogue_last: []
+			dialogue_first: ["Allow me to introduce myself, Lando: sex god of the galaxy.", "Take it easy, Vader. You got Han. I've got a suite of cloud city escorts in my secluded wing that can bring your old tin can back to life. Know what I mean?", "You were in all 6 movies and were lucky Yoda was around to save your ass. You blew it with Anikan and allowed the emperor to turn him into Vader. Luke was a pussy, and honestly, we can thank Vader for teaching him to grow a pair, and then when it was clear you were going to screw up the rest of Luke's training, Yoda convinced you to commit hari kari so he could train Luke before you let another Jedi turn to the dark side. I'm surprised you didn't pop up in The Force Awakens as the catalyst that unwittingly reintroduced the dark side back into the galaxy.", "So how did an obnoqious spolied white brat get that badass black outfit and a voice deeper than that pit Java tried to throw us in in part 3, no part 6, well, original part 3 actual part 6. Honeslty, it's a bit confusing. At least there aren't any part whatever part 2s, or subsection D of the 12th section of the seventh movie. These movies are beginning to read like legal documents."],
+			dialogue_last: ["Like mother, like daughter. Wait, what year is it? If we, oh no. Leia could then be my...", "This deal is getting worse all the time.", "Your attack power is 1. You don't have a chance. And why are you blue? Is there a bug in the force ghost spells you did that caused you to inherit Twi'lek genes?"]
 		}],
 		characters_length: 4,
 		swg_theme_song: new Audio("assets/sounds/star-wars-game-imp-march-8bit.mp3"),
@@ -121,6 +121,105 @@ $(document).ready(function(){
 			this.active_enemy = {};
 		},
 
+		// write the dialogue to the screen
+		dialogueToScreen: function (ch1, ch2) {
+
+			// passing in the spot in each array from the dialogueOptions function below
+			$(this.text_box).html(this.active_player.name + ": " + this.active_player.dialogue_first[ch1]  + "<br /><br />" + this.active_enemy.name + ": " + this.active_enemy.dialogue_last[ch2]);
+		},
+
+		// Dialogue options based on which characters are facing off
+		dialogueOptions: function () {
+
+			// dialogue tree
+			switch(this.active_player.ch_number) {
+
+				// Padme
+				case 0:
+					switch(this.active_enemy.ch_number) {
+						// Vader
+						case 1:
+							this.dialogueToScreen(0, 0);
+							break;
+						// Obi-Wan
+						case 2:
+							this.dialogueToScreen(1, 0);
+							break;
+						// Lando
+						case 3:
+							this.dialogueToScreen(2, 0);
+							break;
+						// default
+							$(this.text_box).html("ATTACK!!!!!");
+							break;
+					} // end switch
+				break;
+
+				// Vader
+				case 1:
+					switch(this.active_enemy.ch_number) {
+						// Padme
+						case 0:
+							this.dialogueToScreen(0, 0);
+							break;
+						// Obi-Wan
+						case 2:
+							this.dialogueToScreen(1, 1);
+							break;
+						// Lando
+						case 3:
+							this.dialogueToScreen(2, 1);
+							break;
+						// default
+							$(this.text_box).html("ATTACK!!!!!");
+							break;
+					} // end switch
+				break;
+
+				// Obi-Wan
+				case 2:
+					switch(this.active_enemy.ch_number) {
+						// Padme
+						case 0:
+							this.dialogueToScreen(0, 1);
+							break;
+						// Vader
+						case 1:
+							this.dialogueToScreen(1, 1);
+							break;
+						// Lando
+						case 3:
+							this.dialogueToScreen(2, 2);
+							break;
+						// default
+							$(this.text_box).html("ATTACK!!!!!");
+							break;
+					} // end switch
+				break;
+
+				// Lando
+				case 3:
+					switch(this.active_enemy.ch_number) {
+						// Padme
+						case 0:
+							this.dialogueToScreen(0, 2);
+							break;
+						// Vader
+						case 1:
+							this.dialogueToScreen(1, 2);
+							break;
+						// Obi-Wan
+						case 2:
+							this.dialogueToScreen(2, 2);
+							break;
+						// default
+							$(this.text_box).html("ATTACK!!!!!");
+							break;
+					} // end switch
+				break;
+			} // end switch
+		},
+
 		// player choses a character function. This repoisitons the selected character on the gameboard and displays text asking the player to select the first enemy to engage.
 		chosenPlayer: function (player) {
 
@@ -147,7 +246,7 @@ $(document).ready(function(){
 			$(this.text_box).html("Select an enemy to attack.");
 		},
 
-		//
+		// chose the enemy
 		chosenEnemy: function (enemy) {
 
 			// determine if there are active enemies so that only one enemy is positioned if the player mistakenly clicks a second enemy before the first enemy has been defeated
@@ -180,11 +279,12 @@ $(document).ready(function(){
 				// activate the attack button
 				$(this.attack_button).prop('disabled', false);
 
-				// display text asking the player to chose an enemy to attack
-				$(this.text_box).html("ATTACK!!!!!");
+				// add the dialogueOptions function
+				this.dialogueOptions();
 			}
 		},
 
+		// once the attackk button is pressed
 		attack: function () {
 
 			// Attack Section			
@@ -219,12 +319,12 @@ $(document).ready(function(){
 				if (this.selected_characters !== 0) {
 
 					// display the name of the dead character to the screen with
-					$(this.text_box).html("You have killed " + this.active_enemy.name + "<br />Select another character to fight.");
+					$(this.text_box).html("You have killed " + this.active_enemy.name + "<br /><br />Select another character to fight.");
 
 				} else {
 
 					// you have won the game so display a congratulatory message
-					$(this.text_box).html("You have killed " + this.active_enemy.name + "<br />Congratulations! You are the ruler of the galaxy.");
+					$(this.text_box).html("You have killed " + this.active_enemy.name + "<br /><br />Congratulations! You are the ruler of the galaxy.");
 
 					// activate the Restart button
 					$(this.restart_button).prop('disabled', false);

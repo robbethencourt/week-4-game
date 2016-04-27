@@ -67,7 +67,7 @@ body {
 
 /* text and buttons */
 #text-container, #buttons-container {
-	height: 200px;
+	height: 250px;
 	padding: 2em;
 	border: solid 3px #fff;
 	border-radius: 15px;
