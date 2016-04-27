@@ -15,37 +15,37 @@ $(document).ready(function(){
 		characters: [{
 			name: "Padme",
 			base_health_points: 200,
-			health_points: this.base_health_points,
+			health_points: 200,
 			base_attack_power: 10,
-			attack_power: this.base_attack_power,
-			counter_attack_power: 10, // why does this.base_attack_power return undefined?
+			attack_power: 10,
+			counter_attack_power: 10,
 			ch_number: 0
 		}, {
 			name: "Vader",
-			base_health_points: 500,
-			health_points: this.base_health_points,
+			base_health_points: 460,
+			health_points: 460,
 			base_attack_power: 50,
-			attack_power: this.base_attack_power,
-			counter_attack_power: 50, // why does this.base_attack_power return undefined?
+			attack_power: 50,
+			counter_attack_power: 50,
 			ch_number: 1
 		}, {
 			name: "Ghost Obi-Wan",
 			base_health_points: 999,
-			health_points: this.base_health_points,
+			health_points: 999,
 			base_attack_power: 1,
-			attack_power: this.base_attack_power,
-			counter_attack_power: 1, // why does this.base_attack_power return undefined?
+			attack_power: 1,
+			counter_attack_power: 1,
 			ch_number: 2
 		}, {
 			name: "Lando",
 			base_health_points: 300,
-			health_points: this.base_health_points,
+			health_points: 300,
 			base_attack_power: 20,
-			attack_power: this.base_attack_power,
-			counter_attack_power: 20, // why does this.base_attack_power return undefined?
+			attack_power: 20,
+			counter_attack_power: 20,
 			ch_number: 3
 		}],
-		characters_length: 4, // this was coming up undefined as this.characters.length and I'm not sure why
+		characters_length: 4,
 		swg_theme_song: new Audio("assets/sounds/star-wars-game-imp-march-8bit.mp3"),
 
 		// starts the game on load and can be called once the Restart button is pressed
@@ -83,15 +83,15 @@ $(document).ready(function(){
 			// reset position of character divs
 			$(this.ch_divs[0]).css({
 				"top": "0",
-				"right": "810px"
+				"right": "75%"
 			});
 			$(this.ch_divs[1]).css({
 				"top": "0",
-				"right": "540px"
+				"right": "50%"
 			});
 			$(this.ch_divs[2]).css({
 				"top": "0",
-				"right": "270px"
+				"right": "25%"
 			});
 			$(this.ch_divs[3]).css({
 				"top": "0",

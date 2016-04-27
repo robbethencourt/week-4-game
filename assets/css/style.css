@@ -32,15 +32,15 @@ body {
 	}
 
 	#character-1 {
-		right: 810px;
+		right: 75%;
 	}
 
 	#character-2 {
-		right: 540px;
+		right: 50%;
 	}
 
 	#character-3 {
-		right: 270px;
+		right: 25%;
 	}
 
 	#character-4 {
@@ -68,7 +68,7 @@ body {
 /* text and buttons */
 #text-container, #buttons-container {
 	height: 200px;
-	padding: 50px;
+	padding: 2em;
 	border: solid 3px #fff;
 	border-radius: 15px;
 	box-shadow: 3px -3px 0px #999, -3px -3px 0px #999, -3px 3px 0px #999, 3px 3px 0px #999, inset 5px -5px 0px #999, inset -5px -5px 0px #999, inset -5px 5px 0px #999, inset 5px 5px 0px #999;
