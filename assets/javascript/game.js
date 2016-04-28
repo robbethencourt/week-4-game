@@ -31,8 +31,8 @@ $(document).ready(function(){
 			attack_power: 50,
 			counter_attack_power: 50,
 			ch_number: 1,
-			dialogue_first: ["Padme, I've come back through time to eliminate the mother of the rebel alliance. Our love now means nothing to me.", "Wait wait wait. Is this what you thought would happen when I struck you down in Episode IV? (vader laughing, coughing, chocking on laughter) More powerful than I can imagine? (more laughing) Your a ghost! And your attack power is 1. What a joke. What are you going to creep around the corner and 'Boo' me to death? (more laughter)", "The Coruscant escorts sent to me last night were not up to the empire's standards. Did you not get the galactic memorandum on registered night workers? I'll need to thuroughly inspect each of your brothels. Hope I don't find any other violations."],
-			dialogue_last: ["I've always hated the pet name 'Ani', feels like I should be in a musical. And don't even think of calling me Darthi. Prepare to die, my love.", "You smug old coot. No higher ground bs this time. I'm going to smash your midichlorians to smitherines. DIE!!!", "Honestly, Lando. I don't know what the hell you're ever yammering about. I'm tired of pretending to listen to you."]
+			dialogue_first: ["Padme, I've come back through time to eliminate the mother of the rebel alliance. Our love now means nothing to me.", "Wait wait wait. Is this what you thought would happen when I struck you down in Episode IV? (Vader laughing, coughing, chocking on laughter) More powerful than I can imagine? (more laughing) Your a ghost! And your attack power is 1. What a joke. What are you going to creep around the corner and 'Boo' me to death? (more laughter)", "The Coruscant escorts sent to me last night were not up to the empire's standards. Did you not get the galactic memorandum on registered night workers? I'll need to thoroughly inspect each of your brothels. Hope I don't find any other violations."],
+			dialogue_last: ["I've always hated the pet name 'Ani', feels like I should be in a musical. And don't even think of calling me Darthi. Prepare to die, my love.", "You smug old coot. No higher ground bs this time. I'm going to smash your midichlorians to smithereens. DIE!!!", "Honestly, Lando. I don't know what the hell you're ever yammering about. I'm tired of pretending to listen to you."]
 		}, {
 			name: "Ghost Obi-Wan",
 			base_health_points: 999,
@@ -41,7 +41,7 @@ $(document).ready(function(){
 			attack_power: 1,
 			counter_attack_power: 1,
 			ch_number: 2,
-			dialogue_first: ["Padme, allow me to use my powers and save you as a force ghost. It does mean I have to strike you down though.", "You see, I did became stronger. My health is at a max 999 while yours is at a whimpy 460, my young padawan.", "Your mind is weak, Lando. And I need to build my attack power so I can finish off Vader once and for all. It'll be painless. I promise."],
+			dialogue_first: ["Padme, allow me to use my powers and save you as a force ghost. It does mean I have to strike you down though.", "You see, I did became stronger. My health is at a max 999 while yours is at a wimpy 460, my young padawan.", "Your mind is weak, Lando. And I need to build my attack power so I can finish off Vader once and for all. It'll be painless. I promise."],
 			dialogue_last: ["Don't be scared. Anikan is with me now as well. He looked rather old in the original unremastered analog trilogy, but then got a Hollywood upgrade. Looks just as dashing as ever. Let me take you to him.", "You, are, so, OBNOQIOUS!!!", "Does everyone in the galaxy think that?"]
 		}, {
 			name: "Lando",
@@ -51,8 +51,8 @@ $(document).ready(function(){
 			attack_power: 20,
 			counter_attack_power: 20,
 			ch_number: 3,
-			dialogue_first: ["Allow me to introduce myself, Lando: sex god of the galaxy.", "Take it easy, Vader. I've already given you Han and I can sweeten the deal further. I've got a suite full of cloud city escorts in my secluded wing that can bring your old tin can back to life. Know what I mean?", "You were in all 6 movies and were lucky Yoda was around to save your ass. You alienated Anikan and allowed the emperor to turn him into Vader. Luke was a whimp, and honestly, we can thank Vader for teaching him to grow a pair, and then when it was clear you were going to screw up the rest of Luke's training, Yoda convinced you to commit harikari so he could train Luke before you let another Jedi turn to the dark side. I'm surprised you didn't show up in The Force Awakens as the catalyst that unwittingly reintroduced the dark side back into the galaxy.", "So how did an obnoqious spolied white brat get that badass black outfit and a voice deeper than that pit Java tried to throw us in in part 3, no part 6, well, original part 3 actual part 6. Honeslty, it's a bit confusing. At least there aren't any part whatever part 2s, or subsection D of the 12th section of the seventh movie. These movies are beginning to read like legal documents."],
-			dialogue_last: ["Like mother, like daughter. Wait, what year is it? If we, oh no. Leia could then be my...", "This deal is getting worse all the time.", "Your attack power is 1. You don't have a chance. And why are you blue? Is there a bug in the force ghost spells you perfromed that caused you to inherit Twi'lek genes?"]
+			dialogue_first: ["Allow me to introduce myself, Lando: sex god of the galaxy.", "Take it easy, Vader. I've already given you Han and I can sweeten the deal further. I've got a suite full of cloud city escorts in my secluded wing that can bring your old tin can back to life. Know what I mean?", "You were in all 6 movies and were lucky Yoda was around to save your ass. You alienated Anikan and allowed the emperor to turn him into Vader. Luke was a wimp, and honestly, we can thank Vader for teaching him to grow a pair, and then when it was clear you were going to screw up the rest of Luke's training, Yoda convinced you to commit harikari so he could train Luke before you let another Jedi turn to the dark side. I'm surprised you didn't show up in The Force Awakens as the catalyst that unwittingly reintroduced the dark side back into the galaxy.", "So how did an obnoxious spoiled white brat get that badass black outfit and a voice deeper than that pit Java tried to throw us in in part 3, no part 6, well, original part 3 actual part 6. Honestly, it's a bit confusing. At least there aren't any part whatever part 2s, or subsection D of the 12th section of the seventh movie. These movies are beginning to read like legal documents."],
+			dialogue_last: ["Like mother, like daughter. Wait, what year is it? If we, oh no. Leia could then be my...", "This deal is getting worse all the time.", "Your attack power is 1. You don't have a chance. And why are you blue? Is there a bug in the force ghost spells you performed that caused you to inherit Twi'lek genes?"]
 		}],
 		characters_length: 4,
 		swg_theme_song: new Audio("assets/sounds/star-wars-game-imp-march-8bit.mp3"),
@@ -334,7 +334,7 @@ $(document).ready(function(){
 				// set the health points to 0 so no negative numbers show
 				$(this.health_points_span[this.active_enemy.ch_number]).html("0");
 
-				// move the active enemy to the right of the screen, add the .dead-chaaracter class to the image and fade that character out
+				// move the active enemy to the right of the screen, add the .dead-character class to the image and fade that character out
 				$(this.ch_divs[this.active_enemy.ch_number]).animate({right: "0%"}, 200).fadeOut(1000 * 3);
 				$(this.ch_divs[this.active_enemy.ch_number]).find("img").addClass("dead-character");
 				//$(this.ch_divs[this.active_enemy.ch_number]).fadeOut(1000 * 5);
@@ -384,7 +384,7 @@ $(document).ready(function(){
 				// set the health points to 0 so no negative numbers show
 				$(this.health_points_span[this.active_player.ch_number]).html("0");
 
-				// add the .dead-chaaracter class to the active player image
+				// add the .dead-character class to the active player image
 				$(this.ch_divs[this.active_player.ch_number]).find("img").addClass("dead-character");
 
 				// display game over on the screen
@@ -421,7 +421,7 @@ $(document).ready(function(){
 
 			starWarsGame.chosenEnemy($(this));
 
-		} // end if else for chaaracter select
+		} // end if else for character select
 
 	}); // end character click event
 
