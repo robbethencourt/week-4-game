@@ -67,12 +67,17 @@ body {
 
 /* text and buttons */
 #text-container, #buttons-container {
-	height: 250px;
+	height: 270px;
 	padding: 2em;
 	border: solid 3px #fff;
 	border-radius: 15px;
 	box-shadow: 3px -3px 0px #999, -3px -3px 0px #999, -3px 3px 0px #999, 3px 3px 0px #999, inset 5px -5px 0px #999, inset -5px -5px 0px #999, inset -5px 5px 0px #999, inset 5px 5px 0px #999;
 }
+
+	#text-container p {
+		font-size: .9em;
+		line-height: 1.7em;
+	}
 
 	.buttons-ul li {
 		margin-bottom: 30px;
