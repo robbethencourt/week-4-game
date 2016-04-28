@@ -389,7 +389,7 @@ $(document).ready(function(){
 
 				// display game over on the screen
 				// you have won the game so display a congratulatory message
-				$(this.text_box).html("You have been killed by " + this.active_enemy.name + "<br />GAME OVER");
+				$(this.text_box).html("You have been killed by " + this.active_enemy.name + "<br /><br />GAME OVER");
 
 
 				// deactivate the attack button
